@@ -5,26 +5,20 @@
 
 ## Pandoc with Latex
 
-## Using Docker image
-
-```bash 
-docker pull pandoc/core
+```bash
+docker pull pandoc/latex
 ```
 
-### Running Pandoc
+### Running Pandoc/Latex Container
 
 ```bash
 docker run --rm \
        --volume "$(pwd):/data" \
        --user $(id -u):$(id -g) \
-       pandoc/core README.md -o outfile.pdf
+       pandoc/latex readme.md -o outfile.pdf
 ```
 
 ```bash
-docker run --rm \
-       --volume "$(pwd):/data" \
-       --user $(id -u):$(id -g) \
-       pandoc/core README.md -o outfile.pdf
+alias pandock=\
+       'docker run --rm -v "$(pwd):/data" -u $(id -u):$(id -g) pandoc/latex'      
 ```
-
-### Notes
